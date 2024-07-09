@@ -44,20 +44,8 @@ class Car  : public Vehicle{
         }
 };
 
-
-class Application{
-    RunningStrategy* runningStrategy;
-    public:
-        Application(RunningStrategy* ptr){
-            this->runningStrategy = ptr;
-        }
-        void drive(){
-            runningStrategy->run();
-        }
-};
-
 int main()
 {
-    Application app = Application(new OldRunningStrategy());
-    app.drive();
+    Vehicle* app = new Car(new OldRunningStrategy());
+    app->run();
 }

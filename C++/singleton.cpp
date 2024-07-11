@@ -1,4 +1,33 @@
 
+//Thread-Safe Singleton Using Static Local Variable (Meyers' Singleton) 
+#include <iostream>
+
+class Singleton {
+public:
+    // Public static method to access the instance
+    static Singleton& getInstance() {
+        static Singleton instance; // Guaranteed to be initialized only once
+        return instance;
+    }
+
+    // Delete copy constructor and assignment operator
+    Singleton(const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
+
+private:
+    // Private constructor to prevent instantiation
+    Singleton() {}
+};
+
+int main() {
+    // Example usage
+    Singleton::getInstance();
+    Singleton::getInstance();
+    return 0;
+}
+
+
+/*
 // Thread-Safe Singleton Using Static Local Variable (Meyers' Singleton)
 
 #include <iostream>
@@ -27,7 +56,7 @@ int main() {
     std::cout << (s1 == s2) << std::endl;  // Output should be 1 (true)
     return 0;
 }
-
+*/
 
 
 /*
